@@ -1,0 +1,37 @@
+title: "Aviary"           # Fallback if GitHub metadata is unavailable
+description: "A clean, Apple-style Jekyll theme for GitHub project pages"  # Fallback description
+baseurl: ""
+url: ""
+
+# Required for documentation button
+documentation_url: "https://example.com/docs"
+
+# Optional overrides
+copyright_owner: ""     # Override the footer copyright name (defaults to GitHub owner if empty)
+
+# Build settings
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+highlighter: rouge
+permalink: pretty
+
+# SASS settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Defaults
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"

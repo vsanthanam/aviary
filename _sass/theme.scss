@@ -1,0 +1,102 @@
+/* Add optional sass overrides here */
+
+// Variables
+$main-color: #4a86e8;
+$secondary-color: #f1c40f;
+$text-color: #333;
+$light-text-color: #666;
+$background-color: #fff;
+$border-color: #e5e5e5;
+
+// Base styles
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: $text-color;
+  background-color: $background-color;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+a {
+  color: $main-color;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: darken($main-color, 10%);
+  }
+}
+
+// Header
+.site-header {
+  padding: 2rem 0;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 2rem;
+  
+  .site-title {
+    font-size: 2em;
+    margin: 0;
+    
+    a {
+      color: $text-color;
+      
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+  
+  .site-description {
+    color: $light-text-color;
+    font-size: 1.2em;
+    margin-top: 0.5rem;
+  }
+}
+
+// Footer
+.site-footer {
+  margin-top: 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid $border-color;
+  color: $light-text-color;
+  font-size: 0.9em;
+}
+
+// Post and page
+.post, .page {
+  margin-bottom: 2rem;
+  
+  .post-title, .page-title {
+    margin-top: 0;
+  }
+  
+  .post-meta {
+    color: $light-text-color;
+    font-size: 0.9em;
+  }
+}
+
+// Media queries
+@media (max-width: 600px) {
+  .site-header {
+    padding: 1rem 0;
+    
+    .site-title {
+      font-size: 1.5em;
+    }
+  }
+}

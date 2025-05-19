@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if site.github.repository_name %}{{ site.github.repository_name }}{% else %}{{ site.title }}{% endif %}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <!-- Add Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  {% if page.custom_css %}
+    {% for stylesheet in page.custom_css %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ stylesheet }}.css">
+    {% endfor %}
+  {% endif %}
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="spotlight"></div>
+      <div class="title-container">
+        <h1 class="site-title" data-text="{% if site.github.repository_name %}{{ site.github.repository_name }}{% else %}{{ site.title }}{% endif %}">{% if site.github.repository_name %}{{ site.github.repository_name }}{% else %}{{ site.title }}{% endif %}</h1>
+      </div>
+      <p class="site-description">{% if site.github.project_description %}{{ site.github.project_description }}{% else %}{{ site.description }}{% endif %}</p>
+      
+      <div class="cta-buttons">
+        <!-- Always show GitHub button with auto-populated repo URL -->
+        <a href="{% if site.github.repository_url %}{{ site.github.repository_url }}{% else %}{{ site.github_repo }}{% endif %}" class="btn">
+          <span class="btn-icon"><i class="fab fa-github"></i></span>
+          View on GitHub
+        </a>
+        
+        <!-- Only show documentation button if URL is manually provided -->
+        {% if site.documentation_url %}
+          <a href="{{ site.documentation_url }}" class="btn">
+            <span class="btn-icon"><i class="fas fa-book"></i></span>
+            Documentation
+          </a>
+        {% endif %}
+      </div>
+    </header>
+
+    <main class="site-content">
+      <div class="content-card">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; {{ site.time | date: '%Y' }} {% if site.copyright_owner != '' %}{{ site.copyright_owner }}{% elsif site.github.owner_name %}{{ site.github.owner_name }}{% endif %}</p>
+    </footer>
+  </div>
+  
+  <!-- Enhanced parallax effect -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Enhanced parallax effect for title
+      window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const titleContainer = document.querySelector('.title-container');
+        const siteTitle = document.querySelector('.site-title');
+        const siteDescription = document.querySelector('.site-description');
+        
+        // Make the parallax effect more pronounced for visibility
+        if (titleContainer && siteTitle && siteDescription) {
+          // More dramatic movement effect
+          titleContainer.style.transform = `translateY(${scrollTop * 0.4}px)`;
+          siteDescription.style.transform = `translateY(${scrollTop * 0.2}px)`;
+          
+          // Visual indicator - change opacity based on scroll
+          siteTitle.style.opacity = Math.max(1 - scrollTop * 0.003, 0.3);
+          siteDescription.style.opacity = Math.max(1 - scrollTop * 0.005, 0.3);
+        }
+      });
+      
+      // Spotlight effect that follows cursor
+      const spotlight = document.querySelector('.spotlight');
+      const header = document.querySelector('.site-header');
+      
+      if (spotlight && header) {
+        header.addEventListener('mousemove', function(e) {
+          const rect = this.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          
+          spotlight.style.setProperty('--x', x + '%');
+          spotlight.style.setProperty('--y', y + '%');
+          spotlight.style.opacity = 0.7;
+        });
+        
+        header.addEventListener('mouseleave', function() {
+          spotlight.style.opacity = 0;
+        });
+      }
+    });
+  </script>
+</body>
+</html> 

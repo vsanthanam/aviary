@@ -1,0 +1,796 @@
+/* Modern Apple-like styling for Aviary theme */
+:root {
+  /* Light mode variables - refined Apple palette */
+  --background-color: #f5f5f7;
+  --text-color: #1d1d1f;
+  --secondary-text-color: #6e6e73;
+  --secondary-text-color-bright: #8e8e93;
+  --accent-color: #0066cc;
+  --accent-hover: #0055b3;
+  --accent-color-rgb: 0, 102, 204;
+  --accent-hover-rgb: 0, 85, 179;
+  --link-color: #06c;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --gradient-start: #0066cc;
+  --gradient-middle: #5856d6;
+  --gradient-end: #c644fc;
+  --gradient-start-rgb: 0, 102, 204;
+  --gradient-middle-rgb: 88, 86, 214;
+  --gradient-end-rgb: 198, 68, 252;
+  --card-background: rgba(255, 255, 255, 0.7);
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --content-background: #f5f5f7;
+  
+  /* Typography */
+  --title-font-weight: 700;
+  --heading-font-weight: 600;
+  --text-font-weight: 400;
+  
+  /* Syntax highlighting (light mode) */
+  --syntax-bg: #f7f7f7;
+  --syntax-text: #333333;
+  --syntax-comment: #6a737d;
+  --syntax-keyword: #d73a49;
+  --syntax-number: #005cc5;
+  --syntax-string: #032f62;
+  --syntax-function: #6f42c1;
+  --syntax-variable: #e36209;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode variables - refined Apple dark palette */
+    --background-color: #000000;
+    --text-color: #f5f5f7;
+    --secondary-text-color: #a1a1a6;
+    --secondary-text-color-bright: #c7c7cc;
+    --accent-color: #0a84ff;
+    --accent-hover: #409cff;
+    --accent-color-rgb: 10, 132, 255;
+    --accent-hover-rgb: 64, 156, 255;
+    --link-color: #2997ff;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --gradient-start: #0a84ff;
+    --gradient-middle: #5e5ce6;
+    --gradient-end: #bf5af2;
+    --gradient-start-rgb: 10, 132, 255;
+    --gradient-middle-rgb: 94, 92, 230;
+    --gradient-end-rgb: 191, 90, 242;
+    --card-background: rgba(30, 30, 32, 0.65);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --content-background: #000000;
+    
+    /* Syntax highlighting (dark mode) */
+    --syntax-bg: #1e1e1e;
+    --syntax-text: #e6e6e6;
+    --syntax-comment: #999999;
+    --syntax-keyword: #ff7ab2;
+    --syntax-number: #6cb6ff;
+    --syntax-string: #a5d6ff;
+    --syntax-function: #dcbdfb;
+    --syntax-variable: #ffab70;
+  }
+}
+
+/* Base styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--content-background);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  /* Prevent horizontal overflow and unwanted lines */
+  overflow-x: hidden;
+  border: none;
+  font-synthesis: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  background-color: var(--content-background);
+  border: none;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--heading-font-weight);
+  letter-spacing: -0.015em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* Clean, simplified gradient text effect */
+.site-title {
+  font-size: 7rem; /* Even larger for impact */
+  font-weight: var(--title-font-weight);
+  line-height: 0.9;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.03em;
+  position: relative; 
+  z-index: 2;
+  display: inline-block;
+  
+  /* Refined gradient text that actually works */
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+  background-size: 200% 200%;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, gradient 8s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  
+  /* Subtle shadow for depth with Apple-like precision */
+  filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Fix for site header for premium look */
+.site-header {
+  text-align: center;
+  padding: 9rem 0 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 45vh;
+  background-color: var(--content-background);
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+/* Add subtle texture to the header background */
+.site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.025) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.025) 0%, transparent 40%);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.site-description {
+  font-size: 1.625rem;
+  font-weight: 400;
+  color: var(--secondary-text-color);
+  max-width: 32em;
+  margin: 0 auto 2.5rem;
+  padding: 0 1rem;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  line-height: 1.4;
+}
+
+/* Remove the title container */
+.title-container {
+  display: inline-block;
+  position: relative;
+}
+
+/* Ensure no conflicting pseudo-elements */
+.site-title::before, .site-title::after {
+  display: none;
+}
+
+/* Content area - premium card design */
+.site-content {
+  margin-top: -1.5rem;
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+}
+
+/* Syntax highlighting styles with visionOS-inspired design */
+pre, code {
+  font-family: 'SF Mono', ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', monospace;
+  font-size: 0.9em;
+  border-radius: 12px;
+  font-feature-settings: "tnum" 1, "calt" 1;
+}
+
+pre {
+  background-color: var(--syntax-bg);
+  color: var(--syntax-text);
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.75rem 0;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  /* visionOS glass effect */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+/* VisionOS floating effect */
+pre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+code {
+  background-color: var(--syntax-bg);
+  color: var(--syntax-text);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+/* Syntax highlighting colors */
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: var(--syntax-comment); /* Comment */
+}
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr {
+  color: var(--syntax-keyword); /* Keyword */
+}
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo {
+  color: var(--syntax-number); /* Number */
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .s2, .highlight .s1 {
+  color: var(--syntax-string); /* String */
+}
+.highlight .na, .highlight .nb, .highlight .nc, .highlight .no, .highlight .nd, .highlight .ni, .highlight .ne, .highlight .nf, .highlight .nl, .highlight .nn, .highlight .nx {
+  color: var(--syntax-function); /* Name */
+}
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi {
+  color: var(--syntax-variable); /* Variable */
+}
+
+/* Enhanced visionOS-style glass for content card */
+.content-card {
+  background-color: var(--card-background);
+  border-radius: 24px;
+  box-shadow: 0 16px 48px var(--shadow-color);
+  padding: 3.5rem;
+  margin-bottom: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  position: relative;
+}
+
+/* VisionOS-style shimmering border effect */
+.content-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.1), 
+    rgba(255, 255, 255, 0.05), 
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0.05));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: shimmering-border 8s linear infinite;
+  background-size: 400% 100%;
+}
+
+@keyframes shimmering-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
+}
+
+.content-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 24px 56px var(--shadow-color);
+}
+
+/* VisionOS-style buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(var(--accent-color-rgb, 0, 102, 204), 0.8);
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 0.9rem 2rem;
+  border-radius: 980px; /* Apple-like rounded buttons */
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 180px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 
+              0 4px 16px rgba(0, 0, 0, 0.08);
+  border: none;
+  text-decoration: none;
+  position: relative;
+  letter-spacing: -0.01em;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* VisionOS depth effect */
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* VisionOS hover effect */
+.btn:hover {
+  background-color: rgba(var(--accent-hover-rgb, 0, 85, 179), 0.9);
+  transform: scale(1.03) translateY(-2px) translateZ(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 
+              0 8px 24px rgba(0, 0, 0, 0.12);
+  color: white;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 980px;
+  padding: 1px;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0.1), 
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 3rem 0;
+  margin-top: 2rem;
+  color: var(--secondary-text-color);
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+/* Add entrance animation for the title */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add animated gradient for the title */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Enhance dark mode specific styles */
+@media (prefers-color-scheme: dark) {
+  .site-title {
+    /* Opal-like gradient with iridescent blues, purples, and pinks */
+    background: linear-gradient(
+      135deg,
+      #80ddff 0%,
+      #9580ff 20%,
+      #d580ff 40%,
+      #ff80bf 60%,
+      #ff9580 80%,
+      #ffe380 100%
+    );
+    background-size: 300% 300%;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, 
+               opalGradient 15s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    filter: drop-shadow(0px 2px 8px rgba(128, 221, 255, 0.3))
+           drop-shadow(0px 2px 8px rgba(255, 128, 191, 0.3));
+  }
+  
+  .site-header::before {
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.035) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.035) 0%, transparent 40%);
+  }
+  
+  .content-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+  }
+  
+  .btn {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 
+                0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 
+                0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Opal shimmer animation */
+@keyframes opalGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  33% {
+    background-position: 100% 30%;
+  }
+  67% {
+    background-position: 70% 70%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive design with Apple-like precision */
+@media (max-width: 992px) {
+  .site-title {
+    font-size: 5.5rem;
+  }
+  
+  .site-description {
+    font-size: 1.5rem;
+  }
+  
+  .content-card {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 4.5rem;
+  }
+  
+  .site-description {
+    font-size: 1.3rem;
+  }
+  
+  .site-header {
+    padding: 7rem 0 3.5rem;
+    min-height: auto;
+  }
+  
+  .btn {
+    min-width: 160px;
+    padding: 0.85rem 1.8rem;
+  }
+  
+  .content-card {
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 3.5rem;
+  }
+  
+  .site-description {
+    font-size: 1.2rem;
+  }
+  
+  .btn {
+    width: 100%;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .content-card {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+}
+
+/* Premium Apple-style CTA Buttons */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin: 2.5rem 0 0.5rem;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  position: relative;
+  z-index: 20;
+}
+
+.btn-icon {
+  margin-right: 0.625rem;
+  font-size: 1.25rem;
+}
+
+/* Active state for buttons */
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Home page specific styling */
+.home {
+  text-align: center;
+}
+
+.home-content {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.home-content h2 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.home-content ul {
+  padding-left: 1.5rem;
+}
+
+.home-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Subtle dot grid pattern for background texture */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25px 25px, var(--dot-color, rgba(0, 0, 0, 0.03)) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.7;
+}
+
+/* Subtle gradient background */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at top, rgba(var(--gradient-start-rgb), 0.03), transparent 50%),
+              radial-gradient(ellipse at bottom, rgba(var(--gradient-end-rgb), 0.03), transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (prefers-color-scheme: dark) {
+  body::before {
+    --dot-color: rgba(255, 255, 255, 0.03);
+  }
+}
+
+/* Enhanced title with subtle 3D effect */
+.site-title {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Add subtle floating animation to title */
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateZ(0px);
+  }
+  50% {
+    transform: translateY(-5px) translateZ(5px);
+  }
+  100% {
+    transform: translateY(0px) translateZ(0px);
+  }
+}
+
+.title-container {
+  animation: float 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+/* Refined site description with subtle gradient */
+.site-description {
+  background: linear-gradient(90deg, var(--secondary-text-color), var(--secondary-text-color-bright, var(--secondary-text-color)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: 450;
+}
+
+/* Subtle spotlight effect that follows cursor */
+.site-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                rgba(255, 255, 255, 0.03) 0%, 
+                transparent 50%);
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+/* Image refinements */
+img {
+  border-radius: 12px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 30px var(--shadow-color);
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+/* Enhanced links with subtle underline animation */
+a:not(.btn) {
+  position: relative;
+  text-decoration: none;
+}
+
+a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+a:not(.btn):hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Refined list styling */
+ul, ol {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+ul li::marker {
+  color: var(--accent-color);
+}
+
+/* Refined typographic adjustments */
+p {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent-color);
+  padding-left: 1.5rem;
+  margin-left: 0;
+  color: var(--secondary-text-color);
+  font-style: italic;
+  margin: 2rem 0;
+}
+
+/* Enhanced opal glow in dark mode */
+@media (prefers-color-scheme: dark) {
+  .title-container {
+    position: relative;
+  }
+  
+  .title-container::before {
+    content: '';
+    position: absolute;
+    inset: -20px -30px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(128, 221, 255, 0.15),
+      rgba(149, 128, 255, 0.15),
+      rgba(255, 128, 191, 0.15),
+      transparent 70%
+    );
+    filter: blur(20px);
+    opacity: 0;
+    animation: pulseGlow 8s ease-in-out infinite;
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  @keyframes pulseGlow {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+  
+  /* Slightly adjust the header background in dark mode for better contrast with opal effect */
+  .site-header {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
