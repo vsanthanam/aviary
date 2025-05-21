@@ -42,24 +42,6 @@ documentation_url: "https://example.com/docs"
 # Optional: override the copyright name in the footer
 copyright_owner: "Your Full Name"
 ```
-
-## Try the Demo Locally
-
-Want to see the theme in action with all its interactive features?
-
-1. Clone this repository
-2. Make sure you have Ruby installed
-3. Run the included script:
-
-```bash
-./serve.sh
-```
-
-4. Open your browser to http://localhost:4000
-5. Scroll down to see the parallax effects and other interactive features
-
-See the [demo README](demo/README.md) for more details.
-
 ## Customization
 
 The theme uses GitHub metadata by default, but you can override with your own settings:
