@@ -288,47 +288,11 @@ pre code {
   box-shadow: 0 16px 48px var(--shadow-color);
   padding: 3.5rem;
   margin-bottom: 2.5rem;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border: 1px solid var(--border-color);
   overflow: hidden;
   position: relative;
-}
-
-/* VisionOS-style shimmering border effect */
-.content-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  padding: 1px;
-  background: linear-gradient(45deg, 
-    rgba(255, 255, 255, 0.1), 
-    rgba(255, 255, 255, 0.05), 
-    rgba(255, 255, 255, 0.2), 
-    rgba(255, 255, 255, 0.05));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  animation: shimmering-border 8s linear infinite;
-  background-size: 400% 100%;
-}
-
-@keyframes shimmering-border {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 400% 50%;
-  }
-}
-
-.content-card:hover {
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 24px 56px var(--shadow-color);
 }
 
 /* VisionOS-style buttons */
