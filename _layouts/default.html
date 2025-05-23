@@ -31,10 +31,17 @@
         <!-- Only show documentation button if URL is manually provided -->
         {% if site.documentation_url %}
           <a href="{{ site.documentation_url }}" class="btn">
-            <span class="btn-icon"><i class="fas fa-book"></i></span>
+            <span class="btn-icon"><i class="fas fa-book-open"></i></span>
             Documentation
           </a>
         {% endif %}
+         <!-- Only show download button if URL is manually provided -->
+         {% if site.download_url %}
+         <a href="{{ site.download_url }}" class="btn">
+           <span class="btn-icon"><i class="fas fa-download"></i></span>
+           Download
+         </a>
+         {% endif %}
       </div>
     </header>
 

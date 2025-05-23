@@ -6,6 +6,8 @@ url: ""
 # Required for documentation button
 documentation_url: "https://example.com/docs"
 
+download_url: "https//example.com/downloads"
+
 # Optional overrides
 copyright_owner: ""     # Override the footer copyright name (defaults to GitHub owner if empty)
 
