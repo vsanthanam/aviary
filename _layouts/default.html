@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if site.github.repository_name %}{{ site.github.repository_name }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta property="og:title" content="{% if site.github.repository_name %}{{ site.github.repository_name }}{% else %}{{ site.title }}{% endif %}" />
+  <meta property="og:description" content="{% if site.github.project_description %}{{ site.github.project_description }}{% else %}{{ site.description }}{% endif %}" />
+  <meta property="og:image" content="{% if site.social_image %}{{ site.social_image }}{% else %}{{ site.social_image | default: '/assets/images/social-card.png' }}{% endif %}" />
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <!-- Add Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
