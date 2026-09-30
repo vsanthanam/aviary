@@ -42,6 +42,26 @@ documentation_url: "https://example.com/docs"
 # Optional: override the copyright name in the footer
 copyright_owner: "Your Full Name"
 ```
+## Pages and Navigation
+
+The theme provides three layouts:
+
+- `home`: The large header with the title, description, and buttons. The site's home page uses it automatically.
+- `page`: A compact header with a link back to the home page. Other pages use it automatically.
+- `default`: The shared page shell and footer. The other two layouts build on it.
+
+A page's `title` appears in the browser tab and social previews as "Title · Site Name".
+
+To add links to the footer, list them under `navigation`:
+
+```yaml
+navigation:
+  - title: "Contributing"
+    url: "/contributing/"
+  - title: "Security"
+    url: "/security/"
+```
+
 ## Customization
 
 The theme uses GitHub metadata by default, but you can override with your own settings:

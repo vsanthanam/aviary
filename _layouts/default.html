@@ -1,12 +1,18 @@
 <!DOCTYPE html>
+{%- include site-vars.html -%}
+{%- if page.title and page.url != "/" and page.title != site_name -%}
+  {%- assign page_title = page.title | append: " · " | append: site_name -%}
+{%- else -%}
+  {%- assign page_title = site_name -%}
+{%- endif -%}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if site.github.repository_name %}{{ site.github.repository_name }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta property="og:title" content="{% if site.github.repository_name %}{{ site.github.repository_name }}{% else %}{{ site.title }}{% endif %}" />
-  <meta property="og:description" content="{% if site.github.project_description %}{{ site.github.project_description }}{% else %}{{ site.description }}{% endif %}" />
-  <meta property="og:image" content="{% if site.social_image %}{{ site.social_image }}{% else %}{{ site.social_image | default: '/assets/images/social-card.png' }}{% endif %}" />
+  <title>{{ page_title }}</title>
+  <meta property="og:title" content="{{ page_title }}" />
+  <meta property="og:description" content="{{ site_description }}" />
+  <meta property="og:image" content="{{ site.social_image | default: '/assets/images/social-card.png' }}" />
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <!-- Add Font Awesome for icons -->
@@ -19,45 +25,19 @@
 </head>
 <body>
   <div class="container">
-    <header class="site-header">
-      <div class="title-container">
-        <h1 class="site-title" data-text="{% if site.github.repository_name %}{{ site.github.repository_name }}{% else %}{{ site.title }}{% endif %}">{% if site.github.repository_name %}{{ site.github.repository_name }}{% else %}{{ site.title }}{% endif %}</h1>
-      </div>
-      <p class="site-description">{% if site.github.project_description %}{{ site.github.project_description }}{% else %}{{ site.description }}{% endif %}</p>
-      
-      <div class="cta-buttons">
-        <!-- Always show GitHub button with auto-populated repo URL -->
-        <a href="{% if site.github.repository_url %}{{ site.github.repository_url }}{% else %}{{ site.github_repo }}{% endif %}" class="btn">
-          <span class="btn-icon"><i class="fab fa-github"></i></span>
-          View on GitHub
-        </a>
-        
-        <!-- Only show documentation button if URL is manually provided -->
-        {% if site.documentation_url %}
-          <a href="{{ site.documentation_url }}" class="btn">
-            <span class="btn-icon"><i class="fas fa-book-open"></i></span>
-            Documentation
-          </a>
-        {% endif %}
-         <!-- Only show download button if URL is manually provided -->
-         {% if site.download_url %}
-         <a href="{{ site.download_url }}" class="btn">
-           <span class="btn-icon"><i class="fas fa-download"></i></span>
-           Download
-         </a>
-         {% endif %}
-      </div>
-    </header>
-
-    <main class="site-content">
-      <div class="content-card">
-        {{ content }}
-      </div>
-    </main>
+    {{ content }}
 
     <footer class="site-footer">
+      <!-- Only show navigation if links are manually provided -->
+      {% if site.navigation %}
+        <nav class="footer-nav">
+          {% for link in site.navigation %}
+            <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
+          {% endfor %}
+        </nav>
+      {% endif %}
       <p>&copy; {{ site.time | date: '%Y' }} {% if site.copyright_owner != '' %}{{ site.copyright_owner }}{% elsif site.github.owner_name %}{{ site.github.owner_name }}{% endif %}</p>
     </footer>
   </div>
 </body>
-</html> 
+</html>

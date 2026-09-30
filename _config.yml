@@ -11,6 +11,11 @@ download_url: "https//example.com/downloads"
 # Optional overrides
 copyright_owner: ""     # Override the footer copyright name (defaults to GitHub owner if empty)
 
+# Optional footer navigation
+navigation:
+  - title: "About"
+    url: "/about/"
+
 # Build settings
 markdown: kramdown
 kramdown:

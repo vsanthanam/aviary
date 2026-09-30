@@ -1,0 +1,39 @@
+---
+layout: default
+---
+{%- include site-vars.html -%}
+<header class="site-header">
+  <div class="title-container">
+    <h1 class="site-title" data-text="{{ site_name }}">{{ site_name }}</h1>
+  </div>
+  <p class="site-description">{{ site_description }}</p>
+
+  <div class="cta-buttons">
+    <!-- Always show GitHub button with auto-populated repo URL -->
+    <a href="{{ repository_url }}" class="btn">
+      <span class="btn-icon"><i class="fab fa-github"></i></span>
+      View on GitHub
+    </a>
+
+    <!-- Only show documentation button if URL is manually provided -->
+    {% if site.documentation_url %}
+      <a href="{{ site.documentation_url }}" class="btn">
+        <span class="btn-icon"><i class="fas fa-book-open"></i></span>
+        Documentation
+      </a>
+    {% endif %}
+     <!-- Only show download button if URL is manually provided -->
+     {% if site.download_url %}
+     <a href="{{ site.download_url }}" class="btn">
+       <span class="btn-icon"><i class="fas fa-download"></i></span>
+       Download
+     </a>
+     {% endif %}
+  </div>
+</header>
+
+<main class="site-content">
+  <div class="content-card">
+    {{ content }}
+  </div>
+</main>

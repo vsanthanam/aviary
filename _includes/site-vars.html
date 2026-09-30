@@ -1,0 +1,15 @@
+{%- if site.github.repository_name -%}
+  {%- assign site_name = site.github.repository_name -%}
+{%- else -%}
+  {%- assign site_name = site.title -%}
+{%- endif -%}
+{%- if site.github.project_description -%}
+  {%- assign site_description = site.github.project_description -%}
+{%- else -%}
+  {%- assign site_description = site.description -%}
+{%- endif -%}
+{%- if site.github.repository_url -%}
+  {%- assign repository_url = site.github.repository_url -%}
+{%- else -%}
+  {%- assign repository_url = site.github_repo -%}
+{%- endif -%}
