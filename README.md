@@ -47,19 +47,25 @@ copyright_owner: "Your Full Name"
 The theme provides three layouts:
 
 - `home`: The large header with the title, description, and buttons. The site's home page uses it automatically.
-- `page`: A compact header with a link back to the home page. Other pages use it automatically.
+- `page`: A navigation bar with the site name, which links back to the home page. Other pages use it automatically.
 - `default`: The shared page shell and footer. The other two layouts build on it.
 
 A page's `title` appears in the browser tab and social previews as "Title · Site Name".
 
-To add links to the footer, list them under `navigation`:
+To add navigation, list links under `navigation`. Links under `header` appear in the bar at the top of every page, followed by a link to the repository. On other pages, the link to the current section is highlighted. Links under `footer` appear at the bottom of every page.
 
 ```yaml
 navigation:
-  - title: "Contributing"
-    url: "/contributing/"
-  - title: "Security"
-    url: "/security/"
+  header:
+    - title: "Documentation"
+      url: "https://example.com/docs"
+    - title: "Contributing"
+      url: "/contributing/"
+  footer:
+    - title: "Contributing"
+      url: "/contributing/"
+    - title: "Security"
+      url: "/security/"
 ```
 
 ## Customization

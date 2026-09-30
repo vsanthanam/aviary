@@ -29,9 +29,9 @@
 
     <footer class="site-footer">
       <!-- Only show navigation if links are manually provided -->
-      {% if site.navigation %}
+      {% if site.navigation.footer %}
         <nav class="footer-nav">
-          {% for link in site.navigation %}
+          {% for link in site.navigation.footer %}
             <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
           {% endfor %}
         </nav>

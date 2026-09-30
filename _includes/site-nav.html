@@ -1,0 +1,16 @@
+{%- comment -%}
+  The navigation bar at the top of every page.
+  Pass home=true to omit the site name, which the home page's header already shows.
+{%- endcomment -%}
+<nav class="site-nav{% if include.home %} site-nav-home{% endif %}">
+  {% unless include.home %}
+    <a href="{{ '/' | relative_url }}" class="site-nav-title">{{ site_name }}</a>
+  {% endunless %}
+  <div class="site-nav-links">
+    {% for link in site.navigation.header %}
+      {%- assign prefix = page.url | slice: 0, link.url.size -%}
+      <a href="{{ link.url | relative_url }}"{% if link.url != "/" and prefix == link.url %} class="active" aria-current="page"{% endif %}>{{ link.title }}</a>
+    {% endfor %}
+    <a href="{{ repository_url }}" class="site-nav-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+  </div>
+</nav>

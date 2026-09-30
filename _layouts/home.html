@@ -2,6 +2,9 @@
 layout: default
 ---
 {%- include site-vars.html -%}
+{% if site.navigation.header %}
+  {% include site-nav.html home=true %}
+{% endif %}
 <header class="site-header">
   <div class="title-container">
     <h1 class="site-title" data-text="{{ site_name }}">{{ site_name }}</h1>

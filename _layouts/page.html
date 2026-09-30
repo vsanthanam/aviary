@@ -2,28 +2,7 @@
 layout: default
 ---
 {%- include site-vars.html -%}
-<header class="page-header">
-  <a href="{{ '/' | relative_url }}" class="page-header-title">{{ site_name }}</a>
-
-  <nav class="page-header-links">
-    <a href="{{ repository_url }}">
-      <i class="fab fa-github"></i>
-      GitHub
-    </a>
-    {% if site.documentation_url %}
-      <a href="{{ site.documentation_url }}">
-        <i class="fas fa-book-open"></i>
-        Documentation
-      </a>
-    {% endif %}
-    {% if site.download_url %}
-      <a href="{{ site.download_url }}">
-        <i class="fas fa-download"></i>
-        Download
-      </a>
-    {% endif %}
-  </nav>
-</header>
+{% include site-nav.html %}
 
 <main class="site-content page-content">
   <div class="content-card">
