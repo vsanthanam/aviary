@@ -1,16 +1,29 @@
 {%- comment -%}
   The navigation bar at the top of every page.
   Pass home=true to omit the site name, which the home page's header already shows.
+  On narrow screens, the links collapse into a menu.
 {%- endcomment -%}
+{%- capture links -%}
+  {% for link in site.navigation.header %}
+    {%- assign prefix = page.url | slice: 0, link.url.size -%}
+    <a href="{{ link.url | relative_url }}"{% if link.url != "/" and prefix == link.url %} class="active" aria-current="page"{% endif %}>{{ link.title }}</a>
+  {% endfor %}
+  <a href="{{ repository_url }}" class="site-nav-icon"><i class="fab fa-github" aria-hidden="true"></i><span class="site-nav-icon-label">GitHub</span></a>
+{%- endcapture -%}
 <nav class="site-nav{% if include.home %} site-nav-home{% endif %}">
   {% unless include.home %}
     <a href="{{ '/' | relative_url }}" class="site-nav-title">{{ site_name }}</a>
   {% endunless %}
   <div class="site-nav-links">
-    {% for link in site.navigation.header %}
-      {%- assign prefix = page.url | slice: 0, link.url.size -%}
-      <a href="{{ link.url | relative_url }}"{% if link.url != "/" and prefix == link.url %} class="active" aria-current="page"{% endif %}>{{ link.title }}</a>
-    {% endfor %}
-    <a href="{{ repository_url }}" class="site-nav-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    {{ links }}
   </div>
+  <details class="site-nav-menu">
+    <summary aria-label="Menu">
+      <i class="fas fa-bars site-nav-menu-open" aria-hidden="true"></i>
+      <i class="fas fa-xmark site-nav-menu-close" aria-hidden="true"></i>
+    </summary>
+    <div class="site-nav-menu-panel">
+      {{ links }}
+    </div>
+  </details>
 </nav>

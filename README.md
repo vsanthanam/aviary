@@ -52,7 +52,7 @@ The theme provides three layouts:
 
 A page's `title` appears in the browser tab and social previews as "Title · Site Name".
 
-To add navigation, list links under `navigation`. Links under `header` appear in the bar at the top of every page, followed by a link to the repository. On other pages, the link to the current section is highlighted. Links under `footer` appear at the bottom of every page.
+To add navigation, list links under `navigation`. Links under `header` appear in the bar at the top of every page, followed by a link to the repository. On other pages, the link to the current section is highlighted. On narrow screens, the header links collapse into a menu. Links under `footer` appear at the bottom of every page.
 
 ```yaml
 navigation:

@@ -796,6 +796,103 @@ blockquote {
   font-size: 1.25rem;
 }
 
+/* Hidden visually, but still read by screen readers */
+.site-nav-links .site-nav-icon-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Menu for narrow screens */
+.site-nav-menu {
+  display: none;
+  position: relative;
+  margin-left: auto;
+}
+
+.site-nav-menu summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.2s ease;
+}
+
+.site-nav-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.site-nav-menu summary:hover,
+.site-nav-menu[open] summary {
+  background-color: rgba(var(--accent-color-rgb), 0.1);
+}
+
+/* Qualified with summary to take precedence over Font Awesome's display rules */
+.site-nav-menu summary .site-nav-menu-close,
+.site-nav-menu[open] summary .site-nav-menu-open {
+  display: none;
+}
+
+.site-nav-menu[open] summary .site-nav-menu-close {
+  display: inline-block;
+}
+
+.site-nav-menu-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  min-width: 13rem;
+  padding: 0.5rem;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 16px 48px var(--shadow-color);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  animation: fadeInUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-nav-menu-panel a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  color: var(--secondary-text-color);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.site-nav-menu-panel a:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.08);
+  color: var(--text-color);
+}
+
+.site-nav-menu-panel a.active {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.site-nav-menu-panel a::after {
+  display: none;
+}
+
+.site-nav-menu-panel .site-nav-icon {
+  font-size: 1rem;
+}
+
 .page-content {
   margin-top: 0;
 }
@@ -877,12 +974,21 @@ blockquote {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .site-nav {
+    flex-wrap: nowrap;
     padding: 1.25rem 0 1.75rem;
   }
 
+  .site-nav-home {
+    padding-bottom: 0;
+  }
+
   .site-nav-links {
-    gap: 0.5rem 1rem;
+    display: none;
+  }
+
+  .site-nav-menu {
+    display: block;
   }
 }
